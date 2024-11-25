@@ -34,4 +34,3 @@ export default function RootLayout({
   );
 }
 
-//example haii yo
