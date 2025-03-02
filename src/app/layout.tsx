@@ -4,7 +4,7 @@ import "./globals.css";
 import Footer from "./components/foternav/Footer";
 import Header from "./components/foternav/header";
  
-
+import { AuthProvider } from "./context/AuthContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,12 +29,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={"overflow-auto"}
-      >
-        <Header/>
-        {children}
-        <Footer/>
+      <body className="overflow-auto">
+        <AuthProvider> 
+          <Header />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

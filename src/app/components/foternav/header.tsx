@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import ProfileIcon from "./profilebuttom"
 const Header = () => {
     return (
         
@@ -18,7 +19,7 @@ const Header = () => {
                  <button className="hover:bg-gray-100  h-7 w-20 text-xs rounded-md"><a href="">LEARN</a></button>
                 </div>
                 <div className=" flex justify-end gap-2 mr-6">
-                  <Link href="/login"><Image src="/images/usber.svg" alt="Example image" width={335} height={470} className="rounded-md w-[30px] h-[30px] " /></Link>
+                  <ProfileIcon/>
                   <a href=""><Image src="/images/find.svg" alt="Example image" width={335} height={470} className="rounded-md w-[30px] h-[30px] " /></a>
                   <a href=""><Image src="/images/shop.svg" alt="Example image" width={335} height={470} className="rounded-md w-[30px] h-[30px] " /></a>
                 </div>
