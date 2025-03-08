@@ -109,6 +109,8 @@ import { useEffect } from 'react';
 import { AxiosError } from "axios";
 
 // Define CartItem type
+
+
 export interface CartItem {
   id: string;
   product_name: string;
@@ -116,6 +118,7 @@ export interface CartItem {
   quantity: number;
   image: string;
   selectedSize: string;
+  
 }
 
 interface CartContextType {

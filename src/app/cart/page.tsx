@@ -38,9 +38,9 @@ export default function CartPage() {
         const subtotal = calculateSubtotal();
         return (parseFloat(subtotal) + 150).toFixed(2); // Adding the package protection fee
     };
-
+    
     return (
-        <div className="max-w-4xl mx-auto p-6 font-sans mt-20">
+         <div className="max-w-4xl mx-auto p-6 font-sans mt-20">
             <h1 className="text-3xl font-bold mb-6">YOUR CART ({cartItems.length})</h1>
 
             <div className="bg-yellow-100 border-l-4 border-yellow-500 p-4 mb-6">
@@ -125,7 +125,12 @@ export default function CartPage() {
                 <p className="text-center text-blue-600 hover:underline cursor-pointer">
                     Continue without package protection
                 </p>
-                <KhaltiPayment totalAmount={parseFloat(calculateTotal())} />
+                {cartItems.map((item: CartItem) => (
+                    <div key={item.id}> 
+                        <KhaltiPayment totalAmount={parseFloat(calculateTotal())} purchase_order_id={item.id} purchase_order_name={item.product_name}/></div>
+                 ) )
+                }
+               
 
             </div>
         </div>

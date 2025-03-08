@@ -6,14 +6,22 @@ import { useState } from "react";
  
 interface KhaltiPaymentProps {
     totalAmount: number;
+    purchase_order_id: string,
+    purchase_order_name:string,
+     
   }
 
-  const KhaltiPayment: React.FC<KhaltiPaymentProps> = ({ totalAmount }) => {
+  const KhaltiPayment: React.FC<KhaltiPaymentProps> = ({ totalAmount,purchase_order_id,purchase_order_name}) => {
   const [loading, setLoading] = useState(false);
   const [paymentUrl, setPaymentUrl] = useState<string | null>(null);
  
  
   const handlePayment = async () => {
+    const storedUser = localStorage.getItem("user");
+    const userObject = storedUser ? JSON.parse(storedUser) : null;
+    const name=userObject.username;
+    const email=userObject.email;
+    console.log(name,email)
     setLoading(true);
 
     try {
@@ -25,8 +33,10 @@ interface KhaltiPaymentProps {
           amount:   totalAmount*100, // Amount in paisa (10 NPR = 1000 paisa)
           mobile: "9800000001",
           transaction_id: "txn_123456",
-         
-
+          purchase_order_id: purchase_order_id,
+          purchase_order_name:purchase_order_name,
+          name: name,
+          email:email,
         }),
       });
 

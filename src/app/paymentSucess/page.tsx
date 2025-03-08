@@ -10,7 +10,7 @@ export default function PaymentSuccess() {
   const amount = searchParams.get("amount");
   const finalAmount = amount ? parseFloat(amount) / 100 : 0;
   const status = searchParams.get("status");
-
+  const product_name=searchParams.get("purchase_order_name")
   return (
     <div className="p-6 max-w-lg mx-auto text-center mt-40 mb-40">
       <h1 className="text-2xl font-bold text-green-600">Payment Successful 🎉</h1>
@@ -19,6 +19,7 @@ export default function PaymentSuccess() {
         <p><strong>Transaction ID:</strong> {transaction_id || "N/A"}</p>
         <p><strong>Amount Paid:</strong> Rs.  {finalAmount || "N/A"}</p>
         <p><strong>Status:</strong> {status || "N/A"}</p>
+        <p><strong>Product Name:</strong> {product_name || "N/A"}</p>
       </div>
       <button className="w-full bg-gray-800 text-white py-3 rounded font-bold hover:text-gray-200 mt-10">
                  <Link href={"/supplements"}> CONTINUE SHOPPING</Link>
