@@ -31,7 +31,7 @@ export default function Login() {
         
         const handleSubmit = async (e) => {
           e.preventDefault();
-          console.log("Form Data Before Sending:", formData);  
+         
           try {
             const response = await fetch('http://127.0.0.1:8000/api/users/login/', {
               method: 'POST',
@@ -44,10 +44,16 @@ export default function Login() {
             const data = await response.json();
             console.log("Backend Response:", data); 
         if (response.ok) {
-          login(data.user); // Use login function from AuthContext
+          const { user, access } = data;
+          login({ ...user, access });
+          localStorage.setItem('user', JSON.stringify(user));  // Store the user data
+          localStorage.setItem('access_token', access); 
           setSuccess('Login successful!');
           setError('');
-          window.location.href = '/';
+          setTimeout(() => {
+            window.location.href = "/"; // Forces a full reload
+          }, 500);
+         
           // window.location.reload();
       } else {
           setError(data?.error || 'Login failed.');
@@ -57,12 +63,52 @@ export default function Login() {
     setError(`Error connecting to the server: ${error.message}`);
   }
   
-  };    
+  };   
+
+
+  
+
+
+  
     return(
         // kushal ko login 
     <div className="mt-32">
-      {success && <p style={{ color: 'green' }}>{success}</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+    {success && (
+  <div className=" text-center">
+   
+    <p className="text-2xl font-bold text-green-600">{success}</p>
+    {/* Redirecting text and animated dots on next line */}
+    <p className="mt-4 text-xl font-bold text-black flex justify-center items-center gap-2">
+      Redirecting
+      <span
+        className="inline-block w-2 h-4 bg-black rounded-full"
+        style={{ animation: "dotPulse 1s infinite", animationDelay: "0.5s" }}
+      ></span>
+      <span
+        className="inline-block w-2 h-4 bg-slate-600 rounded-full"
+        style={{ animation: "dotPulse 1s infinite", animationDelay: "0s" }}
+      ></span>
+      <span
+        className="inline-block w-2 h-4 bg-slate-400 rounded-full"
+        style={{ animation: "dotPulse 1s infinite", animationDelay: "0.25s" }}
+      ></span>
+    </p>
+    <style jsx>{`
+      @keyframes dotPulse {
+        0%, 80%, 100% {
+          opacity: 0.5;
+          transform: scale(1);
+        }
+        40% {
+          opacity: 1;
+          transform: scale(1.5);
+        }
+      }
+    `}</style>
+  </div>
+)}
+
+      {error && <h1 className="text-2xl text-center font-semibold text-red-600" >{error}</h1>}
        <form onSubmit={handleSubmit}>
           <div className="flex flex-col items-center mt-16">
         <h1 className="font-bold text-3xl font-sans text-gray-900 mb-2">LOGIN</h1>
