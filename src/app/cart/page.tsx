@@ -125,11 +125,11 @@ export default function CartPage() {
                 <p className="text-center text-blue-600 hover:underline cursor-pointer">
                     Continue without package protection
                 </p>
-                {cartItems.map((item: CartItem) => (
-                    <div key={item.id}> 
-                        <KhaltiPayment totalAmount={parseFloat(calculateTotal())} purchase_order_id={item.id} purchase_order_name={item.product_name}/></div>
-                 ) )
-                }
+                <KhaltiPayment 
+                  totalAmount={parseFloat(calculateTotal())} 
+                  purchase_order_id={cartItems.map(item => item.id).join(",")} 
+                  purchase_order_name={cartItems.map(item => item.product_name).join(",")} 
+    />
                
 
             </div>
