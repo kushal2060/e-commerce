@@ -1,3 +1,4 @@
+import ProfileIcon from "./profilebuttom"
 const Footer = () => {
     return (
       <div>
@@ -41,7 +42,7 @@ const Footer = () => {
             <div className="font-light text-sm display: flex flex-col gap-4 text-white">
               <p>Subscribe to get news and special offers.</p>
               <input type="email" name="email" id="enter email"placeholder="Enter email" className="h-10 w-80 mt-4 placeholder-padding text-black" />
-              <button className="bg-red-600 hover:bg-neutral-900 h-10 w-28 ">Sign up</button>
+              <button className="bg-red-600 hover:bg-neutral-900 h-10 w-28 ">Sign up</button> 
             </div>
           </div>
           {/* bottom and copyright section*/}

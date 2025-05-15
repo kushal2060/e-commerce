@@ -240,7 +240,7 @@ const ItholateProductClick = () => {
           />
           <p className="font-semibold">{product.name}</p>
           <p className="text-xs font-thin">{product.description}</p>
-          <p>{product.price}</p>
+          <p>Rs. {product.price}</p>
         </div>
       ))}
     </div>
@@ -250,7 +250,7 @@ const ItholateProductClick = () => {
 
       {/* train harder than before with Raw */}
       <section>
-    <p className="mb-5 text-2xl font-bold text-center ">TRAIN HARDER THAN BEFORE WITH RAW</p>
+    <p className="mb-5 mt-32 text-2xl font-bold text-center ">TRAIN HARDER THAN BEFORE WITH RAW</p>
     <div className="flex gap-5 mx-5 mb-40 display:">
       {/* first img and components */}
       <div className="">
@@ -280,7 +280,7 @@ const ItholateProductClick = () => {
 
 
       {/* from the people */}
-      <section className="mb-40 ml-20">
+      <section className="mb-20 ml-20">
         <div className="flex display: ">
           <div className="flex flex-col display:">
           <p className="mb-5 text-xl font-semibold  text-black">From the people</p>
